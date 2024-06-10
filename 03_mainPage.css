@@ -191,3 +191,58 @@ button:disabled{/**버튼 속성이 disabled되면 색을 바꾼다.**/
     justify-content: space-between;
     border: 1px solid #e0e0e0;
 }
+#CD{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+#CD1{
+    overflow-y: auto;
+    width: 300px;
+    height: 450px;
+    border: 1px solid #e0e0e0; 
+    margin: 0px 5px 0px 0px;
+}
+#CD1 span{
+    font-size: 28px;
+    line-height: 30px;
+    height: 150px;
+    display: block;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+#CD1 span > a{
+    padding: 10px;
+}
+#CD1 h1{
+    height: 30px;
+    color: black;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 20px;
+}
+#CD1 h1 > a{
+    height: 30px;
+    color: black;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    background-color: white;
+    font-size: 20px;
+}
+.CDI{
+    width: 220px;
+    height: 100px;
+    border: 1px solid #e0e0e0;
+}
+.CDC{
+    width: 220px;
+    height: 100px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+    padding: 5px 0px 0px 5px;
+}

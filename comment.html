@@ -5,36 +5,42 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title>Page Title</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+  <link rel='stylesheet' type='text/css' media='screen' href='comment.css'>
 </head>
 <body>
 
-  <div id="main">
-    <h3>게시물 내용 출력</h3>
+  <div id="content">
+    <div id="main">
+      <h3>게시물 내용 출력</h3>
+      
+      <div id="boardBox">
+
+      </div>
     
-    <div id="boardBox">
-
-    </div>
-  
-  </div>
-
-
-  
-  <div id="commentWrap">
-    <h3>댓글</h3>
-
-    <div id="commentWriteWrap">
-      <input id="commentInput" type="text" />
-      <button onclick="commentAdd()">등록</button>
     </div>
 
-    <div id="commentPrintWrap">
+
+    
+    <div id="commentWrap">
+
+      <h3>댓글</h3>
+
+      <!-- 댓글 등록 -->
+      <div id="commentWriteWrap">
+        <textarea id="commentInput" maxlength="100"></textarea>
+        <button onclick="commentAdd()" id="addBtn">등록</button>
+      </div>
+
+      
+      <!-- 등록한 댓글을 출력하는 구역 -->
+      <div id="commentPrintWrap">
 
 
 
 
+      </div>
+    
     </div>
-  
   </div>
 
   <script src='comment.js'></script>

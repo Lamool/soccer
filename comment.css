@@ -1,0 +1,76 @@
+/* =============== 공통 CSS =============== */
+*{
+  padding: 0px;
+  margin: 0px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+li{
+  list-style-type: none;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+/* ============= 레이아웃 CSS ============= */
+#content{
+  width: 1000px;
+  margin: 0 auto;
+}
+
+
+/* ============= 작업용 CSS ============= */
+/* *{
+  border: 1px solid red;
+} */
+
+
+
+ /* ============= 댓글 입력 창  CSS ============= */
+#commentWriteWrap{
+  display: flex;
+  justify-content: center;
+} 
+
+#commentInput{
+  width: 800px;
+  height: 85px;
+  resize: none;   /* textarea 크기 조정 막기 */
+  font-size: 20px;
+  padding: 5px;
+}
+
+#addBtn{
+  width: 100px;
+  height: 85px;
+  font-size: 24px;
+}
+
+
+
+ /* ============= 댓글 출력 창  CSS ============= */
+#commentPrintWrap{
+  width: 900px;
+  margin: 0 auto;
+}
+
+#commentContentPrint{
+  margin: 30px 0px;
+}
+
+#commentContentHeader{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0px;
+}
+
+#commentContentPrint > #commentContentHeader > #commentWrite, #commentDate{
+  font-size: 19px;
+}
+
+#commentContentPrint > #commentContent{
+  font-size: 23px;
+}

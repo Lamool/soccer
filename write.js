@@ -50,7 +50,9 @@ function _write(){console.log('write()');
   let month=new Date().getMonth()+1;
   let day=new Date().getDate();
   let hour=new Date().getHours();
-  let minute=new Date().getMinutes();
+  let minute=''
+  if(new Date().getMinutes()<10){minute=`0${new Date().getMinutes()}`}
+  else{minute=new Date().getMinutes()};
   let board={
     no: boardList.length==0 ? 1: boardList[boardList.length-1].no+1
     , title: title, content: content, writer: nick, date:year+`-`+month+`-`+day+` `+hour+`:`+minute , view: 1,

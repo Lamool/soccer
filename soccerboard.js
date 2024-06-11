@@ -28,7 +28,8 @@ function print(){
   // 페이지당 표시할 게시물수 : itemCount = 10        0 ~ 9       10 ~ 19
   // 시작 게시물 번호 :                               0           10    (page-1)*itemCount
   // 마지막 게시물 번호 :                             9           19    page*itemCount-1
-
+  // <button type="button" onclick="location.href='soccerboard.html?page=1'"> 1 </button>
+  let itemCount=10;
 
 
   for(let i = 0; i < 정렬된게시물리스트.length ; i++ ){
@@ -42,8 +43,10 @@ function print(){
   }
   list.innerHTML=html;
 
-  
+
   
 }
+
+
 
 

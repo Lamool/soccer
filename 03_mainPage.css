@@ -197,13 +197,19 @@ button:disabled{/**버튼 속성이 disabled되면 색을 바꾼다.**/
     display: flex;
     justify-content: space-between;
     width: 500px;
-    border: 1px solid black;
     margin: 10px 0px;
 }
-.CB2 span{
+#CBT{
+    margin: 0;
     width: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+}
+#CBV{
+    margin: 0;
+    width: 10px;
+    display: flex;
+    justify-content: right;
 }
 #CD{
     width: 1000px;

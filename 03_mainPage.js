@@ -45,13 +45,13 @@ function boardPrint(){
     for(i=0; i<titleList.length; i++){
         html +=`
                 <li>
-                    <span>
+                    <span id="CBT">
                         ${i+1}
                     </span>
                     <a href="#">
                         ${titleList[i].title}
                     </a>
-                    <span>
+                    <span id="CBV">
                         [${titleList[i].view}]
                     </span>
                 </li>

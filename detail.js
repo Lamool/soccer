@@ -25,6 +25,11 @@ function board(){
 
   let boardBox= document.querySelector('#boardBox')
   let html='';
+  let title=document.querySelector('#title')
+  let nick=document.querySelector('#nick')
+  let date=document.querySelector('#date')
+  let view=document.querySelector('#view')
+  
     //1. 모든 게시물 목록을 가져온다. localStorage
     boardList=JSON.parse(localStorage.getItem('boardList'));
     if(boardList==null){boardList=[]}
@@ -34,15 +39,14 @@ function board(){
       if(boardList[i].no==no){findIndex=i}
     }
 
-    html+=`<div>${boardList[findIndex].title}</div>
-          <div>${boardList[findIndex].content}</div>
-          <div>${boardList[findIndex].no}</div>
-          <div>${boardList[findIndex].writer}</div>
-          <div>${boardList[findIndex].date}</div>
-          <div>${boardList[findIndex].view}</div>`
+    console.log( boardList[findIndex].date.split('T') );
 
-  boardBox.innerHTML=html;
-  
+
+    nick.innerHTML=boardList[findIndex].writer
+    date.innerHTML=`작성일: ${boardList[findIndex].date}`
+    title.innerHTML=boardList[findIndex].title
+    boardBox.innerHTML=boardList[findIndex].content
+
 
 }
 
@@ -66,7 +70,7 @@ function _delete(){ console.log('_delete()');
   localStorage.setItem('boardList',JSON.stringify(boardList));
 
   alert('삭제 성공')
-  location.href="board.html";
+  location.href="soccerboard.html";
   return;
 
 
@@ -105,7 +109,7 @@ function myBoardCheck(findBoardIndex){
    
    
    for(let i=0; i<memberList.length; i++){
-     if(memberList[i].no==loginNo && memberList[i].id == boardList[findBoardIndex].writer){
+     if(memberList[i].no==loginNo && memberList[i].nickname == boardList[findBoardIndex].writer){
        return true;
      }
    }

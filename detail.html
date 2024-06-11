@@ -17,7 +17,7 @@
         #boardnameleft{display: flex;}
         #boardnameright{}
         #main{width: 1000px; background-color: white;margin: 0 auto; padding: 10px;}
-        body{background-color: #108bb7;}
+        body{background-color: #4c677c;}
         a{text-decoration: none; color: black;}
         #substance{width: 980px; height: 480px; border: 1px solid #AAAAAA; padding: 10px;}
         h2{font-size: 15.6px; font-weight: bold; border-bottom: 1px solid #AAAAAA;padding-bottom: 10px;}
@@ -26,6 +26,7 @@
         #date{margin-right: 10px;}
         #writerBox{border-bottom: 1px solid #AAAAAA; padding-bottom: 10px;}
         #btns{text-align: right;padding-top: 10px;}
+        #boardBox{padding: 10px;}
         #H{
     border-bottom: 1px solid #ddd;
 }
@@ -44,9 +45,9 @@
     align-items: center;
 }
 #HT > li{
-    width: 110px;
+    
     padding: 0px;
-    margin: 0px 0px 0px -5px;
+    margin: 0px 10px;
 }
 #HT a{
     padding: 0px 5px 0px 0px;
@@ -140,7 +141,7 @@
     <div id="H1">
         <ul id="HT">
             <li>
-                <a href="#">
+                <a href="login.html">
                     <span>
                         로그인
                     </span>
@@ -156,9 +157,9 @@
                 |
             </li>
             <li>
-                <a href="#">
+                <a href="update.html">
                     <span>
-                        아이디찾기
+                        비밀번호찾기
                     </span>
                 </a>
                 |
@@ -213,15 +214,15 @@
     </div>
 
     <div id="substance">
-        <h2>궁굼한게</h2>
+        <h2 id="title"></h2>
         <div id="writerBox">
             <div id="top">
-                <span id="nick">으쯔라거</span>
-                <span id="id">(kjk2112)</span>
+                <span id="nick"></span>
+                
             </div>
             <div id="bot">
-                <span id="date">작성일:2024-06-10 17:10:45</span>
-                <span id="view">조회수:43</span>
+                <span id="date"></span>
+                <span id="view"></span>
             </div>
         </div>
         <div id="boardBox"></div>
@@ -231,7 +232,7 @@
     <div id="btns">
         <button class="btn btn-dark" onclick="gosoccerboard()" type="button">목록</button>
         <button class="btn btn-dark" onclick="gowrite()" type="button">쓰기</button>
-        <button class="btn btn-dark" onclick="gowrite()" type="button">수정</button>
+        <button class="btn btn-dark" onclick="modify()" type="button">수정</button>
         <button class="btn btn-dark" onclick="_delete()" type="button">삭제</button>
     </div>
   </div>

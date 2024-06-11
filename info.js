@@ -51,7 +51,10 @@ function _delete(){
 function update(){
   location.href="update.html";
 }
-
+function logout(){
+  sessionStorage.removeItem('loginNo');
+  location.href=`03_mainPage.html`;
+}
 
 
 

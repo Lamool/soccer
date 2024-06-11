@@ -69,8 +69,8 @@ function boardPrint(){
 
     let html = ``;
     let html1 = ``;
-    let asd = newTitleList.length <= 6 ? newTitleList.length : 6 
-    for(i=0; i<asd ; i++){
+    let length1 = newTitleList.length <= 6 ? newTitleList.length : 6 
+    for(i=0; i<length1 ; i++){
         html +=`
                 <li>
                     <span class="CBT">
@@ -86,14 +86,14 @@ function boardPrint(){
                 `;
     }
     pref();
-    let length = Object.keys(accTeam).length;
+    let length2 = Object.keys(accTeam).length;
     let sort = Object.fromEntries(
         Object.entries(accTeam).sort(([, a], [, b]) => b - a)
     );
     let arr = Object.keys(sort);
     let value = Object.values(sort);
     console.log(sort);
-    for(j=0; j<length; j++){
+    for(j=0; j<length2; j++){
         html1 += `
                 <li>
                     <span class="CBT">

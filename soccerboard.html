@@ -19,9 +19,185 @@
         #main{width: 1000px; background-color: white;margin: 0 auto; padding: 10px;}
         body{background-color: #108bb7;}
         a{text-decoration: none; color: black;}
+        #H{
+    border-bottom: 1px solid #ddd;
+}
+#H1{
+    width: 100%;
+    background-color: #11443C;
+    margin: 0 auto;
+}
+#HT{margin: 0 auto;
+    width: 1000px;
+    display: flex;
+    list-style-type: none;   
+    color: white;
+    justify-content: flex-end;
+    height: 30px;
+    align-items: center;
+}
+#HT > li{
+    width: 110px;
+    padding: 0px;
+    margin: 0px 0px 0px -5px;
+}
+#HT a{
+    padding: 0px 5px 0px 0px;
+    margin: 0px 5px 0px 0px;
+}
+#HT a > span{
+    color: white;
+    margin: 0px 5px 0px 5px;
+    padding: 0px 5px 0px 5px;
+}
+#HB{
+    width: 1000px;
+    height: 70px;
+    padding: 20px 0px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: white;
+    font-weight: bold;
+}
+#HBB{background-color: white;}
+#HImg{
+    width: 150px;
+    height: 40px;
+}
+#HBL{
+    width: 820px;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 30px 0px 10px 0px;
+}
+#HBL li{
+    margin: 0px 20px ;
+    width: 60px;
+    list-style: none;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+#HBL li > a{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+}
+
+/* ======================================================= 푸터 ==========================================*/
+#F{
+    width: 100%;
+    height: 83px;
+    background-color: #555555;
+}
+#F1{
+    width: 1000px;
+    height: auto;
+    padding: 15px 0;
+    margin: 0 auto;
+    display: flex;
+}
+#FL{
+    width: 150px;
+}
+#F2{
+    width: 800px;
+}
+#F3{
+    display: flex;
+    justify-content: start;
+    padding: 0;
+}
+#F3 > li{
+    list-style: none;
+    color : #ffffff;
+    margin: 0;
+}
+#F3 a{
+    color : #ffffff;
+    padding: 0px 10px ;
+}
+#F4{
+    color: #AAAAAA;
+    padding: 10px 10px;
+}
     </style>
 </head>
 <body>
+
+  <div id="H">
+    <div id="H1">
+        <ul id="HT">
+            <li>
+                <a href="#">
+                    <span>
+                        로그인
+                    </span>
+                </a>
+                |
+            </li>
+            <li>
+                <a href="signup.html">
+                    <span>
+                        회원가입
+                    </span>
+                </a>
+                |
+            </li>
+            <li>
+                <a href="#">
+                    <span>
+                        아이디찾기
+                    </span>
+                </a>
+                |
+            </li>
+            <li>
+                <a href="#">
+                    <span>
+                        모바일앱
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="HBB">
+    <div id="HB">
+        <div>
+            <img src="img_1/logo.png" id="HImg">
+        </div>
+        <div>
+            <ul id="HBL">
+                <li class="HBLB">
+                    <a href="#">
+                        홈
+                    </a>
+                </li>
+                <li class="HBLB">
+                    <a href="#">
+                        리그 / 컵
+                    </a>
+                </li>
+                <li class="HBLB">
+                    <a href="#">
+                        싸줄 TV
+                    </a>
+                </li>
+                <li>
+                    <a href="soccerboard.html">
+                        게시판
+                    </a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
   <div id="main">
     <div id="boardname">
       <div>
@@ -54,6 +230,51 @@
           </div>
       </div>
   </div>
+  <div id="F">
+    <div id="F1">   
+        <div>
+            <img src="img_1/logoBlack.png" id="FL">
+        </div>
+        <div id="F2">
+            <div>
+                <ul id="F3">
+                    <li>
+                        <a href="#">
+                            개인정보취급방침
+                        </a>
+                        |
+                    </li>
+                    <li>
+                        <a href="#">
+                            광고 및 제휴 문의
+                        </a>
+                        |
+                    </li>
+                    <li>
+                        <a href="#">
+                            운영자에게
+                        </a>
+                        |
+                    </li>
+                    <li>
+                        <a href="#">
+                            MY MENU
+                        </a>
+                        |
+                    </li>
+                    <li>
+                        <a href="#">
+                            모바일앱
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="F4">
+                Copyright(c) 2001 soccerline All rights reserved
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

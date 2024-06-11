@@ -23,13 +23,21 @@ function gosoccerboard(){
 memberList = JSON.parse(localStorage.getItem('memberList'));
 if(memberList == null){memberList = [];}
 
-let member = memberList[0];
-sessionStorage.setItem('loginNo', member.no)
+
+// sessionStorage.setItem('loginNo', member.no);
+
+
+
+// 브라우저 세션에 저장된 로그인된 회원번호
+let loginNo = sessionStorage.getItem('loginNo');
+
+
+let member = memberList[loginNo - 1];
 
 
 
 
-// 현재 URL 경로상의 'no' 이름의 매개변수 값 호출, detauk.html?no=7
+// 현재 URL 경로상의 'no' 이름의 매개변수 값 호출
 let urlParams = new URL(location.href).searchParams;
 let no = urlParams.get('no');       // 클릭된 게시물 번호
 no = 1; // 임시

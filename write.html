@@ -19,6 +19,7 @@
         #btns > button{font-weight: bold;}
         #bold{font-size: 16px;}
         body{background-color: #4c677c;}
+        a{text-decoration: none; color: black;}
         #H{
     border-bottom: 1px solid #ddd;
 }
@@ -37,9 +38,9 @@
     align-items: center;
 }
 #HT > li{
-    width: 110px;
+    
     padding: 0px;
-    margin: 0px 0px 0px -5px;
+    margin: 0px 10px;
 }
 #HT a{
     padding: 0px 5px 0px 0px;
@@ -133,7 +134,7 @@
     <div id="H1">
         <ul id="HT">
             <li>
-                <a href="#">
+                <a href="login.html">
                     <span>
                         로그인
                     </span>
@@ -149,9 +150,9 @@
                 |
             </li>
             <li>
-                <a href="#">
+                <a href="update.html">
                     <span>
-                        아이디찾기
+                        비밀번호찾기
                     </span>
                 </a>
                 |
@@ -206,7 +207,7 @@
             <tbody>
               <tr>
                 <th scope="row">필명</th>
-                <td>아라라(ljm425)</td>
+                <td id="nick"></td>
               </tr>
               <tr>
                 <th scope="row">제목</th>
@@ -223,7 +224,7 @@
         <div id="btns">
           <button type="button"  onclick="goboard()" class="btn btn-dark">이전</button>
           <button type="button" onclick="_write()" class="btn btn-dark">등록</button>
-          <button type="button" onclick="modify()" class="btn btn-dark">수정</button>
+          
         </div>
 
 

@@ -18,7 +18,7 @@ if(memberList == null){memberList = [];}
 
       sessionStorage.setItem('loginNo' , memberList[i].no);
 
-      location.href = '';
+      location.href = '03_mainPage.html';
       return;
     }
   }

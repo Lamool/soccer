@@ -422,14 +422,7 @@ function loginState(){
                     </a>
                     |
                 </li>
-                <li>
-                    <a href="#">
-                        <span>
-                            비밀번호찾기
-                        </span>
-                    </a>
-                    |
-                </li>
+            
                 <li>
                     <a href="#">
                         <span>

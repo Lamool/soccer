@@ -120,10 +120,11 @@ a{
 
 /* Styling for the outer container */
 #abc {
-  height: 500px;
+  height: 650px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 60px;
+ 
+
  
 }
 

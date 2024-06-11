@@ -59,6 +59,7 @@ function boardPrint(){
     let clubRank = document.querySelector(`#CB3`);
     titleList = JSON.parse(localStorage.getItem(`boardList`));
     rankList = JSON.parse(localStorage.getItem(`memberList`));
+    
     if(titleList == null){return;};
     if(rankList == null){return;};
 
@@ -76,7 +77,7 @@ function boardPrint(){
                     <span class="CBT">
                         ${newTitleList[i].no}
                     </span>
-                    <a href="#">
+                    <a href="detail.html?no=${newTitleList[i].no}">
                         ${newTitleList[i].title}
                     </a>
                     <span class="CBV">
@@ -126,17 +127,9 @@ function loginState(){
                     |
                 </li>
                 <li>
-                    <a href="signup.html">
+                    <a href="info.html">
                         <span>
-                            회원가입
-                        </span>
-                    </a>
-                    |
-                </li>
-                <li>
-                    <a href="#">
-                        <span>
-                            비밀번호찾기
+                            내 정보
                         </span>
                     </a>
                     |
@@ -166,7 +159,7 @@ function loginState(){
                     |
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="update.html">
                         <span>
                             비밀번호찾기
                         </span>

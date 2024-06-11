@@ -21,6 +21,7 @@ a{
   margin: 0 auto;
   background-color: white;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 
@@ -98,11 +99,22 @@ a{
   font-size: 15px;
 }
 
-#commentContentPrint > #commentContent{
+#commentContentPrint #commentContent{
   font-size: 23px;
   padding: 0px 1px;
 }
 
-#commentContentPrint > #delMoBtn{
+#commentContentPrint #delMoBtn{
   text-align: right;
+}
+
+
+/* 댓글 수정 입력창 */
+#commentModifyInput{
+  width: 945px;
+  height: 95px;
+  resize: none;   /* textarea 크기 조정 막기 */
+  font-size: 20px;
+  padding: 5px;
+  font-family: Malgun Gothic;
 }

@@ -354,14 +354,28 @@ function commentModify2(modifyCommentNum) {
     commentList = [];
   }
     
-  let modifyContent = document.querySelector(`#commentModifyInput`).value;
+  let modifyContent = document.querySelector('#commentModifyInput').value;
   
   let date = new Date();
     
   console.log(modifyContent);
-    
-  commentList[modifyCommentNum - 1].commentContent = modifyContent;
-  commentList[modifyCommentNum - 1].date = `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()} ${date.getHours() < 10 ? '0' + (date.getHours()) : date.getHours()}:${date.getMinutes() < 10 ? '0' + (date.getMinutes()) : date.getMinutes()}:${date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds()}`
+
+  // console.log(modifyCommentNum );
+  // console.log(commentList );
+  // console.log(commentList[modifyCommentNum - 1]);
+  // console.log(commentList[modifyCommentNum - 1].commentContent );
+  
+
+  let findCommentIndex = -1;
+  for (let i = 0; i < commentList.length; i++) {
+    if(commentList[i].commentNo == modifyCommentNum) {
+      findCommentIndex = i;
+      break;
+    }
+  }
+
+  commentList[findCommentIndex].commentContent = modifyContent;
+  commentList[findCommentIndex].date = `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()} ${date.getHours() < 10 ? '0' + (date.getHours()) : date.getHours()}:${date.getMinutes() < 10 ? '0' + (date.getMinutes()) : date.getMinutes()}:${date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds()}`
   
   // localStorage 데이터 최신화
   localStorage.setItem('commentList', JSON.stringify(commentList));

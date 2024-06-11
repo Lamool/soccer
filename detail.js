@@ -52,7 +52,7 @@ board();
 function board(){
 
   let boardBox= document.querySelector('#boardBox')
-  let html='';
+  
   let title=document.querySelector('#title')
   let nick=document.querySelector('#nick')
   let date=document.querySelector('#date')

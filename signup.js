@@ -22,11 +22,14 @@ function signup(){  console.log("signup()")
   if(pw != pwconfirm){alert('회원가입 실패 : 두 비밀번호가 일치하지 않습니다.'); return;}
   if(name.length < 2){alert('회원가입 실패 : 이름은 2글자 이상으로 입력해주세요'); return;}
   if(phone.length < 8 || isNaN(phone)){alert('회원가입 실패 : 전화번호는 - 제외한 8자리 입력해주세요.');return;}
+
   for(let i = 0; i < memberList.length; i++){
+    console.log( memberList[i]);
+    console.log( id );
     if(memberList[i].id == id){alert('회원가입 실패 : 사용중인 아이디 입니다.'); return;}
   }
   for(let member of memberList){
-    if(member.phone == phone){alert('회원가입 실패 : 사용중인 아이디 입니다.'); return;}
+    if(member.phone == phone){alert('회원가입 실패 : 사용중인 핸드폰번호 입니다.'); return;}
   }
 
 

@@ -21,6 +21,7 @@ function info(){
       document.querySelector('#idBox').innerHTML = memberList[i].id;
       document.querySelector('#nameBox').innerHTML = memberList[i].name;
       document.querySelector('#phoneBox').innerHTML = memberList[i].phon;
+      document.querySelector('#soccer').innerHTML = memberList[i].soccer;
       return;
 
     }
@@ -39,11 +40,13 @@ function _delete(){
       memberList.splice( i , 1 );
       localStorage.setItem('memberList' , JSON.stringify(memberList));
       alert('회원탈퇴 했습니다'); break;
-
+      
     }
   }
+  location.href="03_mainPage.html";
   logout();
 }
+
 
 function update(){
   location.href="update.html";

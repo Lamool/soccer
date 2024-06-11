@@ -20,7 +20,7 @@ function info(){
       document.querySelector('#noBox').innerHTML = memberList[i].no;
       document.querySelector('#idBox').innerHTML = memberList[i].id;
       document.querySelector('#nameBox').innerHTML = memberList[i].name;
-      document.querySelector('#phoneBox').innerHTML = memberList[i].phon;
+      document.querySelector('#phoneBox').innerHTML = memberList[i].phone;
       document.querySelector('#soccer').innerHTML = memberList[i].soccer;
       return;
 

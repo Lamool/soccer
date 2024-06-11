@@ -28,9 +28,8 @@ a{
     align-items: center;
 }
 #HT > li{
-    width: 110px;
     padding: 0px;
-    margin: 0px 0px 0px -5px;
+    margin: 0px 10px;
 }
 #HT a{
     padding: 0px 5px 0px 0px;
@@ -193,19 +192,26 @@ button:disabled{/**버튼 속성이 disabled되면 색을 바꾼다.**/
     display: flex;
     justify-content: space-between;
 }
-.CB2 > li{
+#CB2 > li{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin: 10px 0px;
+    overflow: hidden;
+}
+#CB3 > li{
     display: flex;
     justify-content: space-between;
     width: 500px;
     margin: 10px 0px;
 }
-#CBT{
+.CBT{
     margin: 0;
     width: 10px;
     display: flex;
     justify-content: left;
 }
-#CBV{
+.CBV{
     margin: 0;
     width: 10px;
     display: flex;

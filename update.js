@@ -31,7 +31,7 @@ function update(){
     alert('새로운 비밀번호는 5글자 이상으로 해주세요'); return;
   }
   if(newPw != newPwConfirm){
-    alert('새로운 두 비밀번호가 ㅇ ㅣㄹ치하지 않습니다.'); return;
+    alert('새로운 두 비밀번호가 일치하지 않습니다.'); return;
   }
 
   memberList[findIndex].pw = newPw;

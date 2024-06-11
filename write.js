@@ -2,6 +2,24 @@ let loginNo=sessionStorage.getItem('loginNo');
 if(loginNo==null){alert('로그인 후 사용 가능합니다'); location.href='login.html'}
 let boardList=[];
 
+let memberList=[]; // 로컬스토리지에 있는 회원 목록 호출
+  memberList=JSON.parse(localStorage.getItem('memberList'));
+  if(memberList==null){memberList=[]};
+  // 회원목록에서 로그인된 회원번호와 같은 객체 찾기
+
+  console.log(memberList);
+  let html=document.querySelector('#nick')
+let nick =''
+  for(let i=0; i<memberList.length; i++){
+    if(memberList[i].no==loginNo){
+      console.log(memberList[i]);
+      html.innerHTML=memberList[i].nickname
+      nick=memberList[i].nickname
+        // 찾은 객체의 아이디를 writer변수에 대입
+      break;  }
+  }
+
+
 function _write(){console.log('write()');
   boardList=JSON.parse(localStorage.getItem('boardList'));
   if(boardList==null){boardList=[]};
@@ -18,15 +36,24 @@ function _write(){console.log('write()');
   memberList=JSON.parse(localStorage.getItem('memberList'));
   if(memberList==null){memberList=[]};
   // 회원목록에서 로그인된 회원번호와 같은 객체 찾기
+
+  console.log(memberList);
+
   for(let i=0; i<memberList.length; i++){
     if(memberList[i].no==loginNo){
+      console.log(memberList[i]);
       writer=memberList[i].id;  // 찾은 객체의 아이디를 writer변수에 대입
       break;  }
   }
   
+  let year=new Date().getFullYear();
+  let month=new Date().getMonth()+1;
+  let day=new Date().getDate();
+  let hour=new Date().getHours();
+  let minute=new Date().getMinutes();
   let board={
     no: boardList.length==0 ? 1: boardList[boardList.length-1].no+1
-    , title: title, content: content, writer: writer, date: new Date(), view: 1
+    , title: title, content: content, writer: nick, date:year+`-`+month+`-`+day+` `+hour+`:`+minute , view: 1,
   }; console.log(board);
   //4. 저장
   boardList.push(board); console.log(boardList);

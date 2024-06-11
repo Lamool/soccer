@@ -19,12 +19,45 @@ let no=urlParams.get('no'); // 클릭된 게시물 번호
 
 let boardList=[];
 
+
+
+
+
+// ===================== 댓글 ===================== //
+// 회원목록 가져오기
+let memberList = JSON.parse(localStorage.getItem('memberList'));
+if(memberList == null){memberList = [];}
+
+let member = memberList;
+
+// 브라우저 세션에 저장된 로그인된 회원번호
+let loginNo = sessionStorage.getItem('loginNo');
+if (loginNo != null) {
+member = memberList[loginNo - 1];
+}
+
+let commentModifyMode = 1;
+
+let commentList = [];
+
+commentPrint();
+// ================================================ //
+
+
+
+
+
 // 게시물 출력: js열렸을때
 board();
 function board(){
 
   let boardBox= document.querySelector('#boardBox')
   let html='';
+  let title=document.querySelector('#title')
+  let nick=document.querySelector('#nick')
+  let date=document.querySelector('#date')
+  let view=document.querySelector('#view')
+  
     //1. 모든 게시물 목록을 가져온다. localStorage
     boardList=JSON.parse(localStorage.getItem('boardList'));
     if(boardList==null){boardList=[]}
@@ -34,15 +67,14 @@ function board(){
       if(boardList[i].no==no){findIndex=i}
     }
 
-    html+=`<div>${boardList[findIndex].title}</div>
-          <div>${boardList[findIndex].content}</div>
-          <div>${boardList[findIndex].no}</div>
-          <div>${boardList[findIndex].writer}</div>
-          <div>${boardList[findIndex].date}</div>
-          <div>${boardList[findIndex].view}</div>`
+    console.log( boardList[findIndex].date.split('T') );
 
-  boardBox.innerHTML=html;
-  
+
+    nick.innerHTML=boardList[findIndex].writer
+    date.innerHTML=`작성일: ${boardList[findIndex].date}`
+    title.innerHTML=boardList[findIndex].title
+    boardBox.innerHTML=boardList[findIndex].content
+
 
 }
 
@@ -66,7 +98,7 @@ function _delete(){ console.log('_delete()');
   localStorage.setItem('boardList',JSON.stringify(boardList));
 
   alert('삭제 성공')
-  location.href="board.html";
+  location.href="soccerboard.html";
   return;
 
 
@@ -105,10 +137,241 @@ function myBoardCheck(findBoardIndex){
    
    
    for(let i=0; i<memberList.length; i++){
-     if(memberList[i].no==loginNo && memberList[i].id == boardList[findBoardIndex].writer){
+     if(memberList[i].no==loginNo && memberList[i].nickname == boardList[findBoardIndex].writer){
        return true;
      }
    }
    return false;
    
+}
+
+
+
+
+
+// ===================== 댓글 함수 선언 ===================== //
+
+// 1. 댓글을 추가하는 함수
+function commentAdd() {
+  let commentInput = document.querySelector('#commentInput').value;
+  
+  // ---------- 로그인 상태 유효성검사 ---------- //
+  // 브라우저 세션에 저장된 로그인된 회원번호 없으면
+  if (loginNo == null) {
+      alert('로그인 후 댓글 쓰기가 가능합니다.');
+      location.href="login.html";
+      return;
+  }
+  
+  // 모든 댓글 목록을 가져오는 코드
+  commentList = JSON.parse(localStorage.getItem('commentList'));
+  if (commentList == null) {
+    commentList = [];
+  }
+  
+  // 댓글 입력창에 아무것도 입력하지 않고 등록 버튼을 누른 경우 알림창을 띄우고 함수 종료
+  if (loginNo != null && commentInput == '') {
+    alert('내용을 입력해주세요.');
+    return;
+  }
+  
+  let date = new Date();
+  
+  let comment = {
+    commentNo: commentList.length == 0 ? 1 : commentList[commentList.length - 1].commentNo + 1,
+    boardNo: no,
+    nickname: member.nickname,
+    commentContent: commentInput,
+    date: `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()} ${date.getHours() < 10 ? '0' + (date.getHours()) : date.getHours()}:${date.getMinutes() < 10 ? '0' + (date.getMinutes()) : date.getMinutes()}:${date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds()}`
+  };
+  
+  commentList.push(comment);
+  
+  // 입력 완료 후에도 input 박스에 남아있는 입력값을 지우는 코드
+  document.querySelector('#commentInput').value = null;
+  
+  localStorage.setItem('commentList', JSON.stringify(commentList));
+  
+  alert('댓글이 등록되었습니다.');
+  
+  commentPrint();
+  
+}
+  
+  
+  
+// 2. 댓글을 출력하는 함수
+function commentPrint() {
+  let commentWrap = document.querySelector('#commentPrintWrap');
+  
+  // 브라우저 세션에 저장된 로그인된 회원번호 가져오기
+  let loginNo = sessionStorage.getItem('loginNo');
+  
+  // 모든 댓글 목록을 가져오는 코드
+  commentList = JSON.parse(localStorage.getItem('commentList'));
+  if (commentList == null) {
+    commentList = [];
+  }
+  
+  // 모든 게시물 목록을 가져오는 코드
+  boardList = JSON.parse(localStorage.getItem('boardList'));
+  if (boardList == null) {
+      boardList = [];
+  }
+  
+  // 모든 게시물 목록에서 클릭된 게시물번호와 일치한 게시물 찾기
+  let findIndex = -1;
+  for (let i = 0; i < boardList.length; i++) {
+      if (boardList[i].no == no) {
+          findIndex = i;
+          break;
+      }
+  }
+  
+  let board = boardList[ findIndex ]; // 찾은 인덱스의 객체를 호출해서 board변수에 대입
+  
+  let html = ``;
+  
+  for (let i = 0; i < commentList.length; i++) {
+    if (board.no == commentList[i].boardNo) {
+  
+      // 로그인 한 작성자와 댓글 작성자가 일치하다면 삭제 버튼이 보이도록 하는 코드
+      if (member.nickname == commentList[i].nickname) {
+        html += `
+                <div id="commentContentPrint">
+                  <div id="commentContentHeader">
+                    <div id="commentWriter">${commentList[i].nickname}</div>
+                    <div id="commentDate">작성일 : ${commentList[i].date}</div>
+                  </div>
+                  <div class="modifyContent${commentList[i].commentNo}">
+                    <div id="commentContent">${commentList[i].commentContent}</div>
+                    <div id="delMoBtn">
+                      <button onclick="commentModify${commentModifyMode == 1 ? 1 : 2}(${commentList[i].commentNo}, '${commentList[i].commentContent}')" id="modifyBtn" class="btn btn-dark" type="button">수정</button>
+                      <button onclick="commentDelete(${commentList[i].commentNo})" class="btn btn-dark" type="button">삭제</button>
+                    </div>
+                  </div>
+                </div>
+                `;
+      } else {
+          html += `
+                  <div id="commentContentPrint">
+                    <div id="commentContentHeader">
+                      <div id="commentWriter">${commentList[i].nickname}</div>
+                      <div id="commentDate">작성일 : ${commentList[i].date}</div>
+                    </div>
+                    <div id="commentContent">${commentList[i].commentContent}</div>
+                  </div>
+                  `;
+                  //<div>댓글번호 : ${commentList[i].commentNo}</div>
+      }
+      
+    }
+  }
+  
+  commentWrap.innerHTML = html;
+  
+}
+  
+  
+  
+// 3. 댓글을 삭제하는 함수
+function commentDelete(deleteCommentNum) {
+  // 모든 댓글 목록을 가져오는 코드
+  commentList = JSON.parse(localStorage.getItem('commentList'));
+  if (commentList == null) {
+    commentList = [];
+  }
+  
+  
+  let findCommentIndex = -1;
+  for (let i = 0; i < commentList.length; i++) {
+    if(commentList[i].commentNo == deleteCommentNum) {
+      findCommentIndex = i;
+      break;
+    }
+  }
+  console.log(findCommentIndex);
+  
+  // 삭제
+  commentList.splice(findCommentIndex, 1);
+  
+  // * localStorage 데이터 최신화 해줘야 함
+  localStorage.setItem('commentList', JSON.stringify(commentList));
+          
+  alert('댓글이 삭제되었습니다.');
+  
+  commentPrint();
+  
+  return;
+}
+  
+  
+  
+// 4. 댓글을 수정하는 함수1
+function commentModify1(modifyCommentNum, commentContent) {
+  // 모든 댓글 목록을 가져오는 코드
+  commentList = JSON.parse(localStorage.getItem('commentList'));
+  if (commentList == null) {
+    commentList = [];
+  }
+  
+  let findCommentIndex = -1;
+  for (let i = 0; i < commentList.length; i++) {
+    if(commentList[i].commentNo == modifyCommentNum) {
+      findCommentIndex = i;
+      break;
+    }
+  }
+  console.log(findCommentIndex);
+  
+  let html = '';
+  
+  let modifyContent = document.querySelector(`.modifyContent${modifyCommentNum}`);
+  html += `<textarea id="commentModifyInput" maxlength="100">${commentContent}</textarea>`;
+  modifyContent.innerHTML = html;
+  
+  commentModifyMode = 2;
+  let modifyBtn = document.querySelector('#modifyBtn');
+  html += `
+          <div id="delMoBtn">
+            <button onclick="commentModify${commentModifyMode == 1 ? 1 : 2}(${commentList[findCommentIndex].commentNo}, '${commentList[findCommentIndex].commentContent}')" class="btn btn-dark" type="button">수정</button>
+          </div>
+          `;
+  modifyContent.innerHTML = html;
+  
+  console.log(commentModifyMode);
+  
+  return;
+}
+  
+  
+  
+// 5. 댓글을 수정하는 함수2
+function commentModify2(modifyCommentNum) {
+  // 모든 댓글 목록을 가져오는 코드
+  commentList = JSON.parse(localStorage.getItem('commentList'));
+  if (commentList == null) {
+    commentList = [];
+  }
+    
+  let modifyContent = document.querySelector(`#commentModifyInput`).value;
+  
+  let date = new Date();
+    
+  console.log(modifyContent);
+    
+  commentList[modifyCommentNum - 1].commentContent = modifyContent;
+  commentList[modifyCommentNum - 1].date = `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()} ${date.getHours() < 10 ? '0' + (date.getHours()) : date.getHours()}:${date.getMinutes() < 10 ? '0' + (date.getMinutes()) : date.getMinutes()}:${date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds()}`
+  
+  // localStorage 데이터 최신화
+  localStorage.setItem('commentList', JSON.stringify(commentList));
+            
+  alert('댓글이 수정되었습니다.');
+  
+  commentModifyMode = 1;
+  console.log(commentModifyMode);
+  
+  commentPrint();
+  
+  return;
 }

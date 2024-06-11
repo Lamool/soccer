@@ -18,21 +18,16 @@ function gosoccerboard(){
 
 // ===================== 추후에 지울 예정 ===================== //
 
-// 닉네임 같은 거 받고 이건 저장을 안 해서 값이 없네
-// 회원목록 가져오고서 로그인 번호 부여 - 테스트
-memberList = JSON.parse(localStorage.getItem('memberList'));
-if(memberList == null){memberList = [];}
-
-
-// sessionStorage.setItem('loginNo', member.no);
-
+// 회원목록 가져오기
+// memberList = JSON.parse(localStorage.getItem('memberList'));
+// if(memberList == null){memberList = [];}
 
 
 // 브라우저 세션에 저장된 로그인된 회원번호
 let loginNo = sessionStorage.getItem('loginNo');
 
 
-let member = memberList[loginNo - 1];
+// let member = memberList[loginNo - 1];
 
 
 

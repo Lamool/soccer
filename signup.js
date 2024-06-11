@@ -33,7 +33,7 @@ function signup(){  console.log("signup()")
 
   // 데이터 가공
   let no = memberList.length == 0 ? 1 : memberList[memberList.length-1].no+1
-  let member ={no : no , id : id , pw : pw , phone : phone}
+  let member ={no : no , id : id , pw : pw , phone : phone , soccer : soccer , name : name , nickname : nickname }
 
   // 저장
   memberList.push(member);

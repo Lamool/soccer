@@ -129,7 +129,7 @@ function loginState(){
                 <li>
                     <a href="info.html">
                         <span>
-                            내 정보
+                            내정보
                         </span>
                     </a>
                     |
